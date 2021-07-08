@@ -28,6 +28,9 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
+    def get_absolute_url(self):
+        return reverse('posts_by_category', kwargs={'slug': self.slug})
+
 
 class Post(models.Model):
 
@@ -51,6 +54,6 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.pk})
+        return reverse('post_detail', kwargs={'slug': self.slug})
 
 
